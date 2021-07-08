@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../Header/Header";
+import GuestList from "../GuestList/GuestList";
+import DinnerSupplies from "../DinnerSupplies/DinnerSupplies";
 import Footer from "../Footer/Footer";
 import "./App.css";
 
@@ -97,27 +99,8 @@ function App() {
         </div>
         <button type="submit">Add Guest</button>
       </form>
-      <h2>Guest List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Kid's Meal</th>
-          </tr>
-        </thead>
-        <tbody>
-          {guestList.map((guest) => (
-            <tr key={guest.id}>
-              <td>{guest.name}</td>
-              <td>{String(guest.kidsMeal)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <h2>Dinner Supplies</h2>
-      <div>Spoons: {guestList.length * 2}</div>
-      <div>Forks: {guestList.length * 2}</div>
-      <div>Knives: {guestList.length * 2}</div>
+      <GuestList guestList={guestList} />
+      <DinnerSupplies guestList={guestList} />
       <Footer />
     </div>
   );
